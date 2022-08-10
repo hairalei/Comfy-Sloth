@@ -23,6 +23,38 @@ const filter_reducer = (state, action) => {
 
     case SET_LISTVIEW:
       return { ...state, gridView: false };
+
+    case UPDATE_SORT:
+      return { ...state, sort: action.payload };
+
+    case SORT_PRODUCTS:
+      const { sort, filteredProducts } = state;
+      let tempProducts = [...filteredProducts];
+
+      if (sort === 'price-lowest') {
+        tempProducts = tempProducts.sort((a, b) => {
+          return a.price - b.price;
+        });
+      }
+
+      if (sort === 'price-highest') {
+        tempProducts = tempProducts.sort((a, b) => {
+          return b.price - a.price;
+        });
+      }
+
+      if (sort === 'name-a') {
+        tempProducts = tempProducts.sort((a, b) => {
+          return a.name.toLowerCase().localeCompare(b.name);
+        });
+      }
+
+      if (sort === 'name-z') {
+        tempProducts = tempProducts.sort((a, b) => {
+          return b.name.toLowerCase().localeCompare(a.name);
+        });
+      }
+      return { ...state, filteredProducts: tempProducts };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
