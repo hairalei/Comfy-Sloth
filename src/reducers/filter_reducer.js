@@ -66,22 +66,47 @@ const filter_reducer = (state, action) => {
       return { ...state, filters: { ...state.filters, [name]: value } };
 
     case FILTER_PRODUCTS: {
-      const {
-        filters: {
-          text,
-          company,
-          category,
-          color,
-          minPrice,
-          maxPrice,
-          price,
-          shipping,
-        },
-        filteredProducts,
-      } = state;
-      let tempProducts = [...filteredProducts];
-      console.log('filtering');
-      return { ...state };
+      const { allProducts } = state;
+      const { text, category, company, color, price, shipping } = state.filters;
+      let tempProducts = [...allProducts];
+
+      if (text) {
+        tempProducts = tempProducts.filter((item) => {
+          return item.name.toLowerCase().includes(text.toLowerCase());
+        });
+      }
+
+      if (category) {
+        tempProducts = tempProducts.filter((item) => {
+          return category === 'all' ? tempProducts : item.category === category;
+        });
+      }
+
+      if (company) {
+        tempProducts = tempProducts.filter((item) => {
+          return company === 'all' ? tempProducts : item.company === company;
+        });
+      }
+
+      if (color) {
+        tempProducts = tempProducts.filter((item) => {
+          return color === 'all' ? tempProducts : item.colors.includes(color);
+        });
+      }
+
+      if (price >= 0) {
+        tempProducts = tempProducts.filter((item) => {
+          return +item.price <= +price;
+        });
+      }
+
+      if (shipping) {
+        tempProducts = tempProducts.filter((item) => {
+          return item.shipping;
+        });
+      }
+
+      return { ...state, filteredProducts: tempProducts };
     }
 
     case CLEAR_FILTERS:
