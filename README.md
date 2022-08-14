@@ -30,3 +30,7 @@ My biggest challenge in this project is the Stripe API. In the future, I'll alwa
 - View by grid, list
 
 ## Live preview
+
+https://comfysloth-ecommerce.netlify.app,
+
+![Comfy Sloth](public/Comfy-Sloth.gif)
