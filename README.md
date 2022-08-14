@@ -1,22 +1,32 @@
-## Notes
+# Comfy Sloth
 
-#### Older React Version
+An e-commerce website with stripe payment and authentication using ReactJS, Stripe, and Auth0. It was deployed using Netlify.
 
-```
-"react": "^16.13.1",
-"react-dom": "^16.13.1",
-"react-scripts": "3.4.3",
-```
+This is from John Smilga's React course. From this course, I learned a lot about React especially the fundamentals.
 
-#### Current React Version
+- State management
+- Props
+- Hooks
+- Reducers, Context
+- JSX
+- Functional Components
+- Handling Events
+- Forms
+- Conditional Rendering
+- Working with third-party APIs
+- Router
+- Refs
 
-```
-"react": "^17.0.1",
-"react-dom": "^17.0.1",
-"react-scripts": "4.0.0",
-```
+I did not just copy paste code, I make sure that I understand first. I upload this to be a reference in my future projects.
+My biggest challenge in this project is the Stripe API. In the future, I'll always make sure to read the docs.
 
-#### Alternative fix
+## Features
 
-.env file in the root
-FAST_REFRESH=FALSE
+- Stripe payment
+- Authentication using Auth0
+- Local Storage
+- Filter by price, name, color, shipping, and categories
+- Search form
+- View by grid, list
+
+## Live preview
